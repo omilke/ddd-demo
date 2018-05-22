@@ -13,13 +13,15 @@ public class InMemoryEintragRepository implements EintragRepository {
     @Override
     public void speichereEintrag(Eintrag eintrag) {
 
-        this.eintraege.add(eintrag);
+        if (!eintraege.contains(eintrag)) {
+            this.eintraege.add(eintrag);
+        }
     }
 
     @Override
     public void entferneEintrag(Eintrag eintrag) {
 
-
+        eintraege.remove(eintrag);
     }
 
     @Override

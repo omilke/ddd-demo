@@ -13,11 +13,9 @@ public class EintragId {
         if (this == o) {
             return true;
         }
-
         if (!(o instanceof EintragId)) {
             return false;
         }
-
         EintragId eintragId = (EintragId) o;
         return Objects.equals(id, eintragId.id);
     }

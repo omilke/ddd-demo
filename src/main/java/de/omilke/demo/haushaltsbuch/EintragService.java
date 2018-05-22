@@ -15,7 +15,7 @@ public class EintragService {
 
         return eintragRepository
                 .alleEintraege().stream()
-                    .filter(eintrag -> eintrag.gehoertZu(kategorie))
+                    .filter(eintrag -> eintrag.isTeilVon(kategorie))
                 .collect(Collectors.toList());
 
     }

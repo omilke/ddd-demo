@@ -1,8 +1,10 @@
 package de.omilke.demo.haushaltsbuch;
 
+import java.util.Objects;
+
 public class Eintrag {
 
-    private final EintragId eintragId = new EintragId();
+    private final EintragId eintragId;
 
     private Betrag betrag;
     private Datum datum;
@@ -11,6 +13,8 @@ public class Eintrag {
 
     public Eintrag(Betrag betrag, Datum datum, Kommentar kommentar, Kategorie kategorie) {
 
+        eintragId = new EintragId();
+
         this.betrag = betrag;
         this.datum = datum;
 
@@ -18,9 +22,28 @@ public class Eintrag {
         this.kategorie = kategorie;
     }
 
-    public boolean gehoertZu(Kategorie kategorie) {
+    public boolean isTeilVon(Kategorie kategorie) {
 
         return this.kategorie.isUnterkategorieVon(kategorie);
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Eintrag)) {
+            return false;
+        }
+
+        Eintrag eintrag = (Eintrag) o;
+        return Objects.equals(eintragId, eintrag.eintragId);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(eintragId);
+    }
 }

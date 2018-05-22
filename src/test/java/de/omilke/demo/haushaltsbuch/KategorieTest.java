@@ -10,12 +10,12 @@ public class KategorieTest {
     @Test
     public void isUnterkategorie() {
 
-        Kategorie parent = new Kategorie("parent");
+        Kategorie parent = Kategorie.of("parent");
 
         //Teil von sich selbst
         assertThat(parent.isUnterkategorieVon(parent)).isTrue();
 
-        Kategorie child = new Kategorie("child");
+        Kategorie child = Kategorie.of("child");
         parent.addUnterkategorie(child);
 
         //
